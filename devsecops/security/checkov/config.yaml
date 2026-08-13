@@ -1,0 +1,7 @@
+# Checkov configuration — see https://www.checkov.io/2.Basics/Configuration.html
+framework:
+  - terraform
+
+skip-check: []
+
+soft-fail: false

@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  floci:
+    image: floci/floci:latest
+    container_name: floci
+    restart: unless-stopped
+    env_file:
+      - ./config/floci.env
+    volumes:
+      - ./config:/etc/floci:ro
+    ports:
+      - "8080:8080"

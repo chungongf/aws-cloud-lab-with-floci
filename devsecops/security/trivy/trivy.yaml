@@ -1,0 +1,12 @@
+# Trivy configuration — see https://aquasecurity.github.io/trivy/latest/docs/references/configuration/config-file/
+severity:
+  - CRITICAL
+  - HIGH
+
+scan:
+  security-checks:
+    - vuln
+    - config
+    - secret
+
+exit-code: 1

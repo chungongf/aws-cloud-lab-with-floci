@@ -1,0 +1,36 @@
+stages:
+  - lint
+  - scan
+  - plan
+
+variables:
+  TF_ROOT: ${CI_PROJECT_DIR}/terraform
+
+checkov:
+  stage: scan
+  image: bridgecrew/checkov:latest
+  script:
+    - checkov -d "${TF_ROOT}" --config-file devsecops/security/checkov/config.yaml
+  rules:
+    - changes:
+        - terraform/**/*
+
+trivy-fs:
+  stage: scan
+  image: aquasec/trivy:latest
+  script:
+    - trivy fs --config devsecops/security/trivy/trivy.yaml .
+  rules:
+    - when: always
+
+terraform-plan:
+  stage: plan
+  image: hashicorp/terraform:latest
+  script:
+    - cd "${TF_ROOT}"
+    - terraform init -backend=false
+    - terraform validate
+    - terraform plan
+  rules:
+    - changes:
+        - terraform/**/*

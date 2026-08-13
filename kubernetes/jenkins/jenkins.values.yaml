@@ -1,0 +1,20 @@
+# Helm values for the jenkinsci/jenkins chart
+# helm install jenkins jenkinsci/jenkins -n aws-cloud-lab -f jenkins.values.yaml
+
+controller:
+  serviceType: ClusterIP
+  adminUser: admin
+  resources:
+    requests:
+      cpu: "500m"
+      memory: "512Mi"
+    limits:
+      cpu: "1"
+      memory: "1Gi"
+
+persistence:
+  enabled: true
+  size: 8Gi
+
+agent:
+  enabled: true
