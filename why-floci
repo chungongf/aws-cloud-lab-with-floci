@@ -1,0 +1,40 @@
+Why Floci?
+
+Floci provides an AWS-compatible local environment that allows developers to interact with AWS-style APIs locally.
+
+The project documentation describes Floci as an open-source local cloud emulator that can be used without an AWS account or cloud billing.
+
+Floci supports a large collection of AWS services and uses the same general AWS API interaction model, allowing applications and automation tools to communicate with the local environment.
+
+Zero-Cost Development
+
+One of the primary objectives of this project is eliminating unnecessary AWS cloud costs during development and experimentation.
+
+Instead of:
+Developer
+    │
+    ▼
+AWS Account
+    │
+    ▼
+Billable Resources
+    │
+    ▼
+Monthly Cloud Cost
+we use:
+Developer
+    │
+    ▼
+Docker
+    │
+    ▼
+Floci
+    │
+    ▼
+Local AWS Environment
+    │
+    ▼
+$0 Cloud Infrastructure Cost
+
+This makes it possible to repeatedly destroy and recreate infrastructure without worrying about cloud charges.
+
